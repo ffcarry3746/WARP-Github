@@ -76,88 +76,55 @@
     }
   ],
   "outbounds": [
-            "tag": "proxy",
-            "type": "selector",
-            "outbounds": [
-                "URL-TEST | \u0631\u0627\u06cc\u06af\u0627\u0646",
-                "188.114.98.224:3854",
-                "188.114.97.245:3854",
-                "162.159.195.4:1387"
-            ]
-        },
-        {
-            "tag": "URL-TEST | \u0631\u0627\u06cc\u06af\u0627\u0646",
-            "type": "urltest",
-            "outbounds": [
-                "188.114.98.224:3854",
-                "188.114.97.245:3854",
-                "162.159.195.4:1387"
-            ],
-            "url": "https:\/\/www.gstatic.com\/generate_204",
-            "interval": "5m",
-            "tolerance": 50
-        },
-        {
-            "tag": "direct",
-            "type": "direct"
-        },
-        {
-            "tag": "bypass",
-            "type": "direct"
-        },
-        {
-            "tag": "block",
-            "type": "block"
-        },
-        {
-            "tag": "dns-out",
-            "type": "dns"
-        },
-        {
-      "type": "wireguard",
-      "tag": "188.114.98.224:3854",
-      "local_address": [
-        "172.16.0.2/32",
-        "2606:4700:110:8154:67ac:9b13:1674:10ef/128"
+    {
+      "type": "selector",
+      "tag": "select",
+      "outbounds": [
+        "auto",
+        " § 0"
       ],
-      "private_key": "0JpaYuXqJr5pFwy1cU4tpNBP+oxCHkpgA45z\/aE2m1c=",
-      "server": "188.114.98.224",
-      "server_port": 3854,
+      "default": "auto"
+    },
+    {
+      "type": "urltest",
+      "tag": "auto",
+      "outbounds": [
+        " § 0"
+      ],
+      "url": "http://www.gstatic.com/generate_204",
+      "interval": "10m0s"
+    },
+    {
+      "type": "wireguard",
+      "tag": " § 0",
+      "local_address": [
+        "172.16.0.2/24",
+        "2606:4700:110:820a:5ca:e762:5a29:78a6/128"
+      ],
+      "private_key": "+IPkzSjfXpJBV9X/TU8Hyrp2pYKlXoEB5l9WecRrHU0=",
+      "server": "162.159.195.231",
+      "server_port": 3138,
       "peer_public_key": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=",
-      "reserved": "WCeO",
+      "reserved": "AAAA",
       "mtu": 1280,
       "fake_packets": "5-10"
-        },
-                {
-      "type": "wireguard",
-      "tag": "188.114.97.245:3854",
-      "local_address": [
-        "172.16.0.2/32",
-        "2606:4700:110:8154:67ac:9b13:1674:10ef/128"
-      ],
-      "private_key": "0JpaYuXqJr5pFwy1cU4tpNBP+oxCHkpgA45z\/aE2m1c=",
-      "server": "188.114.97.245",
-      "server_port": 3854,
-      "peer_public_key": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=",
-      "reserved": "WCeO",
-      "mtu": 1280,
-      "fake_packets": "5-10"
-                },
-           {
-      "type": "wireguard",
-      "tag": "162.159.195.4:1387",
-      "local_address": [
-        "172.16.0.2/32",
-        "2606:4700:110:8154:67ac:9b13:1674:10ef/128"
-      ],
-      "private_key": "0JpaYuXqJr5pFwy1cU4tpNBP+oxCHkpgA45z\/aE2m1c=",
-      "server": "162.159.195.4",
-      "server_port": 1387,
-      "peer_public_key": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=",
-      "reserved": "WCeO",
-      "mtu": 1280,
-      "fake_packets": "5-10"
-           }
+    },
+    {
+      "type": "dns",
+      "tag": "dns-out"
+    },
+    {
+      "type": "direct",
+      "tag": "direct"
+    },
+    {
+      "type": "direct",
+      "tag": "bypass"
+    },
+    {
+      "type": "block",
+      "tag": "block"
+    }
   ],
   "route": {
     "geoip": {
